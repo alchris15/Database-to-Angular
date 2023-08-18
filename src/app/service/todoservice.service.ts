@@ -7,10 +7,19 @@ import {TodoModel} from '../models/todo.model';
   providedIn: 'root'
 })
 export class TodoserviceService {
-  url = ('https://jsonplaceholder.typicode.com/users');
-constructor(private http: HttpClient) {}
-GetAllTodos(): Observable<TodoModel[]>{
-  return this.http.get<any[]>(this.url)
-      }
-    }
+  users: any;
+  constructor(private http: HttpClient){}
+  url = 'http://localhost:3001/todos/GetAllTodos';
   
+
+GetAllTodos(): Observable<any>{
+  return this.http.get(`${this.url}`)
+      }
+CreateNewTodo(data:any): Observable<any>{
+        return this.http.post(`${this.url}`, data);
+
+
+    }
+
+  
+  }

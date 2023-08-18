@@ -1,7 +1,7 @@
 .todo {
     display: flex;
     padding: 10px 15px;
-    background-color: #FFF;
+    background-color: #ebe6e6;
     border-bottom: 1 px solid #ddd;
     max-width: 400px;
     margin: 15px auto;
@@ -9,7 +9,7 @@
 }
 
 .todo:nth-child(even) {
-    background-color: #eee;
+    background-color: #af1a1a;
 }
 
 .todo:last-of-type {
@@ -53,4 +53,28 @@
     padding: 10px 15px;
     font-size: 18px;
     font-weight: 700;
+}
+.id {
+    display: flex;
+    padding: 10px 15px;
+    background-color: #FFF;
+    border-bottom: 1 px solid #ddd;
+    max-width: 400px;
+    margin: 15px auto;
+    text-align: left;
+}
+.todolist {
+    text-align: right;
+    padding: 10px 15px;
+    background-color: #eeee;
+    border-bottom: 1 px solid #ddd;
+    max-width: 400px;
+    margin: 15px auto;
+    display: flex;
+}
+
+.button {
+    text-transform: uppercase;
+    text-align: right;
+    
 }

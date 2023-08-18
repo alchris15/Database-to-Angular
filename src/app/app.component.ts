@@ -8,12 +8,31 @@ import { TodoserviceService } from './service/todoservice.service';
 })
 export class AppComponent {
   title = 'To-Do-List';
-  GetAllTodos:any;
-  constructor(private todoService:TodoserviceService)
-{
-  this.todoService.GetAllTodos().subscribe((data)=>{
-    console.log("data",data);
-  this.GetAllTodos=data;
+
+  list:any[]=[];
+  addTask(item:string)
+  {
+    this.list.push({id:this.list.length,name:item})
+    console.warn(this.list);
+  }
+  removeTask(id:number)
+  {
+    console.warn(id)
+    this.list=this.list.filter(item=>item.id!==id);
+  }
+  users:any;
+  constructor(private todoService:TodoserviceService){}
+  
+  ngOninit():void{
+    this.GetAllTodos();
+  }
+  
+
+  GetAllTodos(){
+  this.todoService.GetAllTodos().subscribe((res)=>{
+    this.users = res.data;
+
+});
+
 }
-)
-}}
+}
