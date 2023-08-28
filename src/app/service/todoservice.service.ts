@@ -15,9 +15,11 @@ export class TodoserviceService {
 GetAllTodos(): Observable<any>{
   return this.http.get(`${this.url}`)
       }
-CreateNewTodo(data:any): Observable<any>{
-        return this.http.post(`${this.url}`, data);
 
+// add model   or use string
+//fix wrong URL   
+CreateNewTodo(data:TodoModel): Observable<any>{
+        return this.http.post(`${this.url}`, data);
 
     }
 

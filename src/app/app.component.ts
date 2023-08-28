@@ -12,8 +12,10 @@ export class AppComponent {
   list:any[]=[];
   addTask(item:string)
   {
-    this.list.push({id:this.list.length,name:item})
-    console.warn(this.list);
+    // this.list.push({id:this.list.length,name:item})
+    // console.warn(this.list);
+    //call the CreateNewTodo service and send the value you want
+   
   }
   removeTask(id:number)
   {
