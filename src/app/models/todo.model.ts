@@ -1,9 +1,11 @@
 export class TodoModel {
     public id!:number;
-    public todolist!:string;
+    public title!:string;
+    public description!:string;
     public isCompleted!:number;
     public isDeleted!:number;
-    public completed!:boolean;
+    public todolist!:string;
+    
     
     }
     

@@ -3,16 +3,22 @@
     <h1>Angular Todo App</h1>
   </header>
 
-  <input type="text" placeholder="Enter New Task" #task />
-<br>  
-<br>  
-<button (click)="addTask(task.value)">Add New Task</button>
-<br>  
-<br> 
-
-<ul *ngFor="let item of list">
-<li>{{item.name}} <button (click)="removeTask(item.id)">Remove</button></li>
-</ul>
-
+  <div class="main-area">
+    <div class="content-area">
+      <div class="header">
+        <h1>TodoList</h1>
+        <hr>
+      </div>
+      <div class="container">
+      
+        <div class="form-area">
+          <h3>Create Todo</h3>
+          <form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">        
+            <label>Todolist</label>
+            <input type="text" name="todolist" ngModel>
+          
+            <input type="submit" value="Send">
+          </form>
+        </div>
   <app-todo></app-todo>
 </div>

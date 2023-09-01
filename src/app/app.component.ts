@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoserviceService } from './service/todoservice.service';
+import { TodoModel } from './models/todo.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,33 +10,17 @@ import { TodoserviceService } from './service/todoservice.service';
 })
 export class AppComponent {
   title = 'To-Do-List';
-
-  list:any[]=[];
-  addTask(item:string)
-  {
-    // this.list.push({id:this.list.length,name:item})
-    // console.warn(this.list);
-    //call the CreateNewTodo service and send the value you want
-   
-  }
-  removeTask(id:number)
-  {
-    console.warn(id)
-    this.list=this.list.filter(item=>item.id!==id);
-  }
-  users:any;
-  constructor(private todoService:TodoserviceService){}
   
-  ngOninit():void{
-    this.GetAllTodos();
-  }
+  
   
 
-  GetAllTodos(){
-  this.todoService.GetAllTodos().subscribe((res)=>{
-    this.users = res.data;
+  constructor(private http:HttpClient){}
 
-});
-
-}
-}
+  onTodoCreate(products: {pName: string}){
+    console.log(products);
+    this.http.post('http://localhost:3001/todos/create', products)
+    .subscribe((res) => {
+      console.log(res);
+    })
+  }
+  }

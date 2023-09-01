@@ -3,7 +3,6 @@ import { Todo } from './../../models/Todo';
 import {TodoserviceService } from './../../service/todoservice.service';
 import { TodoModel } from 'src/app/models/todo.model';
 
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -11,15 +10,7 @@ import { TodoModel } from 'src/app/models/todo.model';
   
 })
 
-
 export class TodoComponent implements OnInit {
-
-
-  todos!: TodoModel[];
-  inputTodo: string="";
-  constructor(private todoserviceService: TodoserviceService) { }
-
-
   ngOnInit(): void { 
     this.todos = []
     this.todoserviceService.GetAllTodos()
@@ -27,12 +18,16 @@ export class TodoComponent implements OnInit {
       this.todos = resp;
       console.log(this.todos);
     })
-
   }
 
- addTodo () {
-   
+  todos!: TodoModel[];
+  todo = new TodoModel();
+  inputTodo: string="";
+  todoService: any;
 
-   this.inputTodo ="";
+  constructor(private todoserviceService: TodoserviceService) { }
+
+  
+    
+    
   }
-}
