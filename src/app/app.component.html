@@ -1,24 +1,20 @@
-<div class ="app">
+<div class ="todos">
   <header>
     <h1>Angular Todo App</h1>
   </header>
-
-  <div class="main-area">
-    <div class="content-area">
-      <div class="header">
-        <h1>TodoList</h1>
-        <hr>
-      </div>
-      <div class="container">
-      
-        <div class="form-area">
-          <h3>Create Todo</h3>
-          <form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">        
-            <label>Todolist</label>
-            <input type="text" name="todolist" ngModel>
-          
-            <input type="submit" value="Send">
+ 
+          <form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">       
+            <input type="inputTodo" 
+            
+            name="todolist" 
+            placeholder="Enter todo.." 
+            class="todo-input" ngModel>
+            
+            <input type="submit" value="Add Todo" class="todo-submit"/>
+            
           </form>
+          
         </div>
+        
   <app-todo></app-todo>
-</div>
+
