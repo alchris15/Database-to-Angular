@@ -5,6 +5,18 @@
         <button class="delete" (click)="deleteTodo(i)">Remove</button>
     </div>
 </div> -->
+<form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">       
+    <input type="inputTodo" 
+    
+    name="todolist" 
+    placeholder="Enter todo.." 
+    class="todo-input" ngModel>
+    
+    <input type="submit" value="Add Todo" class="todo-submit"/>
+    
+  </form>
+  
+
 
 <div *ngFor="let todo of todos">
     <div class="todolist">
