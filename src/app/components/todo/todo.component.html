@@ -1,10 +1,8 @@
+<div *ngIf ="message" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Todo Saved.
+  <button type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+</div>  
 
-<!-- <div *ngFor="let todo of todos; let i =index;" class="todo {{ (todo.completed ? 'done' : '')}}">
-    <input type="checkbox"> <div class="id">{{ i }}</div>
-        <div class="content" (click) ="toggleDone(i)">{{ todo.content }}</div>
-        <button class="delete" (click)="deleteTodo(i)">Remove</button>
-    </div>
-</div> -->
 <form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">       
     <input type="inputTodo" 
     
@@ -14,17 +12,16 @@
     
     <input type="submit" value="Add Todo" class="todo-submit"/>
     
-  </form>
-  
 
+  </form>
+ 
 
 <div *ngFor="let todo of todos">
     <div class="todolist">
        {{ todo.id }} {{ todo.todolist }} 
        {{ todo.isCompleted }} {{ todo.isDeleted }} 
-       <button class="delete">Remove</button></div>
-  
-  
+       <td><span (click)="deleteTodos( todo.id )">Delete</span></td>>
+
   </div>
 
 
