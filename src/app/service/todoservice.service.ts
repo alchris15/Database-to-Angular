@@ -16,11 +16,13 @@ export class TodoserviceService {
  }
 
   BaseApi: string = 'http://localhost:3001/todos/getalltodos';
-  url: string ='http://localhost:3001/todos/Delete?id=';
+  url: string ='http://localhost:3001/todos/delete?id=';
   
 GetAllTodos(): Observable<any>{
   return this.http.get<any[]>(`${this.BaseApi}`)
       } 
+
+
 
 deleteTodos( id:any ){
 return this.http.get(`${this.url}${id}`);

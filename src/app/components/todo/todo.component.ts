@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Todo } from './../../models/Todo';
 import {TodoserviceService } from './../../service/todoservice.service';
 import { TodoModel } from 'src/app/models/todo.model';
@@ -23,9 +23,8 @@ export class TodoComponent implements OnInit {
   todo = new TodoModel();
   inputTodo: string="";
   todoService: any;
-  addTodo= new FormGroup({
-    todos: new FormControl('')
-  });
+ @ViewChild('todoForm') form: NgForm;
+
   
 
   ngOnInit(): void { 
@@ -43,9 +42,10 @@ export class TodoComponent implements OnInit {
   deleteTodos( todo_id:any ){
     console.log(todo_id);
     this.todoserviceService.deleteTodos(todo_id).subscribe((res) =>
-    console.log(res));
+    //console.log(res));
+    this.ngOnInit());
   }
-  
+
   
  
   onTodoCreate(products: {pName: string}){
@@ -53,9 +53,17 @@ export class TodoComponent implements OnInit {
     this.http.post<{name: string}>
     ('http://localhost:3001/todos/create', products)
     .subscribe((res) => {
-     // console.log(res);
-      this.message=true;
-      this.addTodo.reset({});
+      console.log(res);
+    
     })   
   }
+
+onEditClicked(todolist:string){
+  let currentTodo = this.todos.find((p) => {return p.todolist === todolist});
+  console.log(this.form);
+  this.form.setValue({
+    todolist: currentTodo.todolist,
+   
+  });
+}
 }

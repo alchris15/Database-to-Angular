@@ -5,7 +5,7 @@ export class TodoModel {
     public isCompleted!:number;
     public isDeleted!:number;
     public todolist!:string;
-   
+    
     
     }
     
