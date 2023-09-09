@@ -5,7 +5,8 @@
 
 <form #todoForm="ngForm" (ngSubmit)="onTodoCreate(todoForm.value)">       
     <input type="inputTodo" name="todolist" placeholder="Enter todo.." class="todo-input" ngModel>
-      <input type="submit" value="Add Todo" class="todo-submit"/>
+      
+    <input type="submit" value="{{editMode ? 'Update Todo' : 'Add Todo'}}" class="todo-submit"/>
     
   </form>
 
@@ -13,8 +14,8 @@
     <div class="todolist">
        {{ todo.id }} {{ todo.todolist }} 
        {{ todo.isCompleted }} {{ todo.isDeleted }} 
-       <td><span (click)="deleteTodos( todo.id )">Delete</span></td>>
-       <td><button class="btn-edit" (click)="onEditClicked(todo.todolist)">Edit</button></td>
+       <td><span (click)="deleteTodos( todo.id )">Delete</span></td>
+       <td><button class="btn-edit" (click)="onEditClicked(todo.todolist)">EDIT</button></td>
 
   </div>
 

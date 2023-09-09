@@ -23,6 +23,8 @@ export class TodoComponent implements OnInit {
   todo = new TodoModel();
   inputTodo: string="";
   todoService: any;
+  editMode: boolean = false;
+  currentTodoId: string;
  @ViewChild('todoForm') form: NgForm;
 
   
@@ -49,21 +51,26 @@ export class TodoComponent implements OnInit {
   
  
   onTodoCreate(products: {pName: string}){
+    if(!this.editMode)
     console.log(products);
     this.http.post<{name: string}>
     ('http://localhost:3001/todos/create', products)
     .subscribe((res) => {
-      console.log(res);
+      //console.log(res);
+      this.ngOnInit();
+      this.todoserviceService.updateTodo(this.currentTodoId, products);
     
     })   
   }
 
 onEditClicked(todolist:string){
+  this.currentTodoId = todolist;
   let currentTodo = this.todos.find((p) => {return p.todolist === todolist});
   console.log(this.form);
   this.form.setValue({
     todolist: currentTodo.todolist,
    
   });
+  this.editMode = true;
 }
 }
